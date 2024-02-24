@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title,
+#subTitle {
+    text-align: center;
+}
+
+fieldset {
+    width: 30%;
+    margin: auto;
+    background-color: bisque;
+    box-shadow: 2px 2px 3px black;
+    margin-top: 10px;
+}
+
+.busca {
+    padding: 10px;
+}
+
+#input-busca {
+    padding-left: 10px;
+}
+
+
+
+legend {
+    font-size: 1.2em;
+    font-style: bold;
+    margin-left: 8px;
+}
+
+.inputDados {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;
+    align-items: center;*/
+    gap: 10px;
+}
+
+.entradaDados {
+    margin-left: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#descricao {
+    width: 80%;
+}
+
+#tipos {
+    width: 35%;
+}
+
+#valor {
+    width: 100px;
+}
+
+#numberParcels {
+    width: 38%;
+}
+
+/*-----------------------------------------------------------------*/
+.parcelamentoNao {
+    display: none;
+}
+
+.parcelamentoSim {
+    display: block;
+}
+
+/*-----------------------------------------------------------------*/
+
+.saidaDados {
+    /*border: 1px solid black;*/
+    margin-left: 5px;
+}
+
+span {
+    font-style: italic;
+    font-weight: bold;
+}
+
+#cadastra {
+    width: 20%;
+    padding: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px 3px black;
+    border-radius: 5px;
+    border: none;
+}
+
+.minhaTabela {
+    /*border: 1px solid black;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tituloRelatorio {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#cabecalhoRelat {
+    /*border: 1px solid green;*/
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dadosWorker {
+    /*border: 2px solid blue;*/
+    width: 50%;
+    height: 20px;
+}
+
+#name {
+    float: right;
+    margin-right: 20px;
+}
+
+#dadosMesAno {
+    /*border: 1px solid red;*/
+    width: 50%;
+    height: 20px;
+}
+
+#monthYear {
+    float: left;
+    margin-left: 20px;
+}
+
+
+
+/*#relatorio {
+    margin-top: 25px;
+    margin-left: 30px;
+}*/
+
+.tituloVisivel {
+    display: block;
+}
+
+.oculto {
+    display: none;
+}
+
+#tabela {
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+#calcTotalCompras {
+    margin-left: 12px;
+    font-size: 1.1em;
+}
+
+
+
+.botoesControle {
+    /*border: 2px solid red;*/
+    width: 30%;
+    height: 50px;
+    margin: auto;
+}
+
+#editarDados,
+#relatorio,
+#encerrar {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.editing {
+    background-color: red;
+    color: white;
+}
+
+
+.linha-selecionada {
+    background-color: lime;
+    font-weight: bold;
+}

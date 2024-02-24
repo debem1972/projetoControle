@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/controle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Controle de despesas no cartão de crédito</title>
+</head>
+
+<body>
+    <main class="container">
+        <header class="title">
+            <h1>Controle</h1>
+        </header>
+
+        <fieldset>
+            <legend>Lançar gastos</legend>
+            <section class="inputDados">
+                <div class="entradaDados">
+                    <label for="data">Data da Compra</label>
+                    <input type="text" id="data" autocomplete="off" required>
+                </div>
+                <div class="entradaDados">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" placeholder="...local do gasto..." required autocomplete="off">
+                </div>
+
+                <div class="entradaDados">
+                    <label for="tipos">Tipo de gasto</label>
+                    <select name="tipos" id="tipos">
+                        <option selected disabled value="">Selecione o tipo de gasto...</option>
+                        <option value="carro">Carro</option>
+                        <option value="casa">Casa</option>
+                        <option value="educação">Educação</option>
+                        <option value="família">Família</option>
+                        <option value="lazer">Lazer</option>
+                        <option value="mercado">Mercado</option>
+                        <option value="outros">Outros</option>
+                        <option value="pessoal">Pessoal</option>
+                        <option value="saúde">Saúde</option>
+                    </select>
+                </div>
+
+                <div class="entradaDados">
+                    <label for="valor">Valor da compra</label>
+                    <input type="text" id="valor" required autocomplete="off">
+                </div>
+
+                <div class="entradaDados">
+                    <h4>Parcelado?</h4>
+                    <label for="parcelaSim">Sim</label>
+                    <input type="radio" id="parcelaSim" name="parcelas" value="sim" title="Escolha uma das opções...!">
+                    <label for="parcelaNao">Não</label>
+                    <input type="radio" id="parcelaNao" name="parcelas" value="nao" title="Escolha uma das opções...!">
+                </div>
+                <div class="entradaDados parcelamento parcelamentoNao">
+                    <label for="numberParcels">Parcelas</label>
+                    <select name="numeroParc" id="numberParcels">
+                        <option selected disabled value="">Selecione o nº de parcelas...</option>
+                        <option value="2">2 vezes</option>
+                        <option value="3">3 vezes</option>
+                        <option value="4">4 vezes</option>
+                        <option value="5">5 vezes</option>
+                        <option value="6">6 vezes</option>
+                        <option value="7">7 vezes</option>
+                        <option value="8">8 vezes</option>
+                        <option value="9">9 vezes</option>
+                        <option value="10">10 vezes</option>
+                        <option value="11">11 vezes</option>
+                        <option value="12">12 vezes</option>
+                        <option value="13">13 vezes</option>
+                        <option value="14">14 vezes</option>
+                        <option value="15">15 vezes</option>
+                        <option value="16">16 vezes</option>
+                        <option value="17">17 vezes</option>
+                        <option value="18">18 vezes</option>
+                        <option value="19">19 vezes</option>
+                        <option value="20">20 vezes</option>
+                        <option value="21">21 vezes</option>
+                        <option value="22">22 vezes</option>
+                        <option value="23">23 vezes</option>
+                        <option value="24">24 vezes</option>
+                    </select>
+                </div>
+                <div class="saidaDados">
+                    <p id="valorCompraAlert"></p>
+                    <span id="viewValorCompra"></span>
+                </div>
+                <button id="cadastra" onclick="lancar()">Lançar</button>
+            </section>
+        </fieldset>
+        <fieldset>
+            <legend>Filtrar dados</legend>
+            <div class="busca">
+                <input type="text" id="input-busca" placeholder="o que você procura?" autocomplete="off">
+            </div>
+        </fieldset>
+        <div class="content">
+            <h3 id="tituloRelatorio" class="oculto">Relatório de compras no cartão de crédito</h3>
+            <div id="cabecalhoRelat">
+                <div id="dadosWorker">
+                    <p id="name" class="oculto"></p>
+                </div>
+                <div id="dadosMesAno">
+                    <p id="monthYear" class="oculto"></p>
+                </div>
+            </div>
+
+            <section class="minhaTabela">
+                <table id="tabela" width="90%" border="1">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Parcelas</th>
+                            <th>Valor da Parcela</th>
+                            <th>Tipo de gasto</th>
+                            <th>Mes da Fatura</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="linhaOriginal" style="display: none;">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <div id="total">
+                <fieldset id="campoTotalHoras">
+                    <legend>Valor total dos gastos</legend>
+                    <div>
+                        <p id="calcTotalCompras"></p>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="botoesControle">
+            <div class="edicao">
+                <button id="editarDados" onclick="editar()">Editar tabela</button>
+                <button id="finalizaEdit" onclick="finalizarEdicao()">Finalizar edição</button>
+                <button id="btnDeletarLinha">Deletar linha</button>
+            </div>
+            <button id="relatorio" onclick="geraPrompt()">Gerar relatório</button>
+
+
+        </div>
+    </main>
+
+    <script src="./js/controleVictor.js"></script>
+    <script src="./js/filtroPesquisaVictor.js"></script>
+    <script src="./js/somaValoresVictor1a.js"></script>
+    <script src="./js/editTableVictor.js"></script>
+    <script src="./js/excluiLinhaVictor.js"></script>
+    <script src="./js/configRelatVictor.js"></script>
+</body>
+
+</html>

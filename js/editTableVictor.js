@@ -16,7 +16,7 @@ function carregarDadosTabela() {
 //-----------------------------------------------------------------------
 function editar() {
     let tabela = document.getElementById("tabela");
-    for (let i = 0; i < tabela.rows.length; i++) {
+    for (let i = 1; i < tabela.rows.length; i++) {     //Começa em 1 para evitar editar a linha thead
         for (let j = 0; j < tabela.rows[i].cells.length; j++) {
             tabela.rows[i].cells[j].contentEditable = "true";
         };

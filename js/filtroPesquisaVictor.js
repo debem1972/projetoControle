@@ -4,7 +4,7 @@ const input_busca = document.querySelector('#input-busca');
 const tabela_horas = document.querySelector('#tabela');
 
 input_busca.addEventListener('keyup', function () {
-    let expressao = input_busca.value.toLowerCase().split(' ');   //Separa os termos de busca;
+    let expressoes = input_busca.value.toLowerCase().split(' ');   //Separa os termos de busca;
 
     /*  if (expressao.length === 1) {
           return;

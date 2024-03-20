@@ -4,23 +4,25 @@ const input_busca = document.querySelector('#input-busca');
 const tabela_horas = document.querySelector('#tabela');
 
 input_busca.addEventListener('keyup', function () {
-    let expressao = input_busca.value.toLowerCase();
+    let expressao = input_busca.value.toLowerCase().split(' ');   //Separa os termos de busca;
 
-    if (expressao.length === 1) {
-        return;
-    }
+    /*  if (expressao.length === 1) {
+          return;
+      }*/
 
     let linhas = tabela_horas.getElementsByTagName('tr');
 
     // Comece a partir da segunda linha (índice 1), ignorando o cabeçalho
     for (let posicao = 1; posicao < linhas.length; posicao++) {
         let conteudoDaLinha = linhas[posicao].innerHTML.toLowerCase();
+        let correspondencia = expressoes.every(expressao => conteudoDaLinha.includes(expressao));   // Verifica se todas as expressões estão na linha
 
-        if (conteudoDaLinha.includes(expressao)) {
+        /*if (conteudoDaLinha.includes(expressao)) {
             linhas[posicao].style.display = '';
         } else {
             linhas[posicao].style.display = 'none';
-        };
+        };*/
+        linhas[posicao].style.display = correspondencia ? '' : 'none';
     };
 
     atualizarTotal();
